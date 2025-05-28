@@ -224,17 +224,17 @@ export default function OesteGatitos() {
   useGSAPAnimations()
 
   const rescueImages = [
-    "/placeholder.svg?height=320&width=480",
-    "/placeholder.svg?height=320&width=480",
-    "/placeholder.svg?height=320&width=480",
-    "/placeholder.svg?height=320&width=480",
-    "/placeholder.svg?height=320&width=480",
+    "https://i.imgur.com/GiHTWEn.png",
+    "https://i.imgur.com/SCi14Ab.png",
+    "https://i.imgur.com/Z0YqRRU.png",
+    "https://i.imgur.com/5uD0Az2.png",
+    "https://i.imgur.com/gRR6Vek.png",
   ]
 
   const colonyImages = [
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
+    "https://i.imgur.com/v7YuBpj.png",
+    "https://i.imgur.com/d3gtDlu.png",
+    "https://i.imgur.com/xxVpZXO.png",
   ]
 
   return (
@@ -285,34 +285,65 @@ export default function OesteGatitos() {
       </header>
 
       {/* Hero Section */}
-      <section id="inicio" className="hero-section relative py-32 px-4 overflow-hidden">
+      <section id="inicio" className="hero-section relative py-32 px-4 overflow-hidden" style={{
+    backgroundImage: "url('https://i.imgur.com/EeBnXUs.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}>
         <div className="hero-bg absolute inset-0 bg-gradient-to-br from-orange-200 via-pink-200 to-purple-300 opacity-60"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
         <div className="container mx-auto text-center relative z-10">
           <div className="gsap-fade-up">
             <h2 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent leading-tight">
-              Salvando Vidas Felinas
+              Invisibles a la vista
             </h2>
             <p className="text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Somos un grupo de amigas dedicadas al rescate, cuidado y protección de gatitos en situación de
-              vulnerabilidad
+              "Ahí, en el margen, viven silenciosos y olvidados. Pero cada gato callejero tiene una historia que vale la pena contar… y salvar."
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
-                <Heart className="mr-3 h-6 w-6" />
-                Conoce Nuestros Rescates
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-orange-400 text-orange-600 hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-500 hover:text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <MapPin className="mr-3 h-6 w-6" />
-                Visita Nuestra Colonia
-              </Button>
+            <Button
+  size="lg"
+  className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+  onClick={() => {
+    const alias = "oestegatitos.uala";
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Intenta abrir la app de Mercado Pago directamente con el alias
+      window.location.href = `mercadopago://send?alias=${encodeURIComponent(alias)}`;
+    } else {
+      // Copia el alias al portapapeles y avisa al usuario
+      navigator.clipboard.writeText(alias);
+      alert("El alias 'oestegatitos.uala' fue copiado al portapapeles. Pegalo en Mercado Pago para donar.");
+      // Abre la página de transferencias de Mercado Pago
+      window.open("https://www.mercadopago.com.ar/money-out/transfer", "_blank");
+    }
+  }}
+>
+    <Image 
+    src="https://i.imgur.com/FtP83BE.png" 
+    alt="Mercado Pago Logo" 
+    width={50} 
+    height={50} 
+    className="mr-3" 
+  />
+  Realizar Una Donación
+</Button>
+    <Button
+  size="lg"
+  variant="outline"
+  className="border-2 border-orange-400 text-orange-600 hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-500 hover:text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+   onClick={() => {
+    const lat = -34.64869; 
+    const lng = -58.61637;
+    
+    // Abrir Google Maps en una nueva pestaña
+    window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
+  }}
+>
+  <MapPin className="mr-3 h-6 w-6" />
+  Visita Nuestra Colonia
+</Button>
             </div>
           </div>
         </div>
@@ -419,7 +450,7 @@ export default function OesteGatitos() {
                     <Heart className="h-10 w-10 text-white" />
                   </div>
                   <h5 className="text-3xl font-bold mb-3 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                    150+
+                    +150
                   </h5>
                   <p className="text-gray-700 font-medium">Gatitos Rescatados</p>
                 </CardContent>
@@ -430,7 +461,7 @@ export default function OesteGatitos() {
                     <Star className="h-10 w-10 text-white" />
                   </div>
                   <h5 className="text-3xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                    120+
+                    +120
                   </h5>
                   <p className="text-gray-700 font-medium">Adopciones Exitosas</p>
                 </CardContent>
@@ -441,7 +472,7 @@ export default function OesteGatitos() {
                     <Paw className="h-10 w-10 text-white" />
                   </div>
                   <h5 className="text-3xl font-bold mb-3 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                    30+
+                    +15
                   </h5>
                   <p className="text-gray-700 font-medium">En Cuidado Temporal</p>
                 </CardContent>
@@ -567,7 +598,7 @@ export default function OesteGatitos() {
               <div className="space-y-6 mb-8">
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-orange-100 to-pink-100 rounded-xl">
                   <MapPin className="h-6 w-6 text-orange-600" />
-                  <span className="text-gray-800 font-medium">Barrio Oeste - Zona Segura</span>
+                  <span className="text-gray-800 font-medium">Zona Oeste - Morón</span>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-pink-100 to-purple-100 rounded-xl">
                   <Heart className="h-6 w-6 text-pink-600" />
@@ -578,10 +609,19 @@ export default function OesteGatitos() {
                   <span className="text-gray-800 font-medium">Atención veterinaria regular</span>
                 </div>
               </div>
-              <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                <MapPin className="mr-3 h-5 w-5" />
-                Ver Ubicación
-              </Button>
+             <Button 
+              className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              onClick={() => {
+                const lat = -34.64869; 
+                const lng = -58.61637;
+                
+                // Abrir Google Maps en una nueva pestaña
+                window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
+              }}
+            >
+              <MapPin className="mr-3 h-5 w-5" />
+              Ver Ubicación
+            </Button>
             </div>
             <div className="gsap-slide-right">
               <div className="grid grid-cols-2 gap-6">
@@ -628,11 +668,11 @@ export default function OesteGatitos() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4 p-3 bg-gradient-to-r from-gray-700/50 to-gray-600/50 rounded-xl">
                   <Phone className="h-6 w-6 text-orange-400" />
-                  <span className="text-gray-200">+54 9 11 1234-5678</span>
+                  <span className="text-gray-200">+54 9 11 3824-1728</span>
                 </div>
                 <div className="flex items-center gap-4 p-3 bg-gradient-to-r from-gray-700/50 to-gray-600/50 rounded-xl">
                   <Instagram className="h-6 w-6 text-pink-400" />
-                  <span className="text-gray-200">@oestegatitos</span>
+                  <span className="text-gray-200">@oeste.gatitos</span>
                 </div>
                 <div className="flex items-center gap-4 p-3 bg-gradient-to-r from-gray-700/50 to-gray-600/50 rounded-xl">
                   <MapPin className="h-6 w-6 text-blue-400" />
@@ -671,7 +711,7 @@ export default function OesteGatitos() {
           </div>
 
           <div className="border-t border-gray-700 mt-12 pt-8 text-center">
-            <p className="text-gray-400 text-lg">© 2024 Oeste Gatitos. Hecho con ❤️ para nuestros amigos felinos.</p>
+            <p className="text-gray-400 text-lg">© 2025 Oeste Gatitos. Hecho con ❤️ para nuestros amigos felinos.</p>
           </div>
         </div>
       </footer>
@@ -681,14 +721,14 @@ export default function OesteGatitos() {
         <Button
           size="icon"
           className="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-110"
-          onClick={() => window.open("https://wa.me/5491112345678", "_blank")}
+          onClick={() => window.open("https://wa.me/5491138241728", "_blank")}
         >
           <MessageCircle className="h-8 w-8" />
         </Button>
         <Button
           size="icon"
           className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-110"
-          onClick={() => window.open("https://instagram.com/oestegatitos", "_blank")}
+          onClick={() => window.open("https://instagram.com/oeste.gatitos", "_blank")}
         >
           <Instagram className="h-8 w-8" />
         </Button>
