@@ -17,6 +17,7 @@ import {
   Users,
   Target,
   Eye,
+  Car,
   PawPrintIcon as Paw,
 } from "lucide-react"
 
@@ -224,11 +225,11 @@ export default function OesteGatitos() {
   useGSAPAnimations()
 
   const rescueImages = [
-    "https://i.imgur.com/GiHTWEn.png",
+    "https://i.imgur.com/ruuD7jB.png",
     "https://i.imgur.com/SCi14Ab.png",
     "https://i.imgur.com/Z0YqRRU.png",
-    "https://i.imgur.com/5uD0Az2.png",
-    "https://i.imgur.com/gRR6Vek.png",
+    "https://i.imgur.com/7QqutHs.png",
+    "https://i.imgur.com/4dS67oP.png",
   ]
 
   const colonyImages = [
@@ -285,6 +286,12 @@ export default function OesteGatitos() {
                 className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
               >
                 Recorridos
+              </a>
+              <a
+                href="#castraciones"
+                className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
+              >
+                Castraciones
               </a>
               <a
                 href="#contacto"
@@ -355,7 +362,7 @@ export default function OesteGatitos() {
   }}
               >
                 <MapPin className="mr-3 h-6 w-6" />
-                Visita Nuestra Colonia
+                Ubicación De La Colonia
               </Button>
             </div>
           </div>
@@ -367,18 +374,18 @@ export default function OesteGatitos() {
         <div className="container mx-auto">
           <div className="gsap-fade-up text-center mb-16">
          <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent pt-2 pb-2 pr-1">
-          ¿Quiénes Somos?
-        </h3>
+              ¿Quiénes Somos?
+            </h3>
           </div>
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="gsap-slide-left">
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Somos un grupo de amigas apasionadas por el bienestar animal que decidimos unir fuerzas para hacer la
+                Somos Nati, Juli y Mai, un grupo de amigas apasionadas por el bienestar animal que decidimos unir fuerzas para hacer la
                 diferencia en la vida de los gatitos más vulnerables de nuestra comunidad.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Comenzamos rescatando gatitos abandonados y heridos, y poco a poco fuimos creciendo hasta convertirnos
-                en una pequeña organización dedicada al rescate, rehabilitación y búsqueda de hogares amorosos.
+                Con la suma de nuevas tareas como traslados, cuidados y castraciones, sumamos a nuevos integrantes como Virgi, Lean y Yanel, que contribuyeron al crecimiento
+                dando lugar a una pequeña organización dedicada al rescate, rehabilitación y búsqueda de hogares amorosos.
               </p>
               <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl shadow-lg">
                 <Users className="h-10 w-10 text-orange-600" />
@@ -605,7 +612,7 @@ export default function OesteGatitos() {
                 Ubicación y Cuidado
               </h4>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Cuidamos una colonia de gatos en el barrio oeste de la ciudad. Aquí proporcionamos alimentación diaria,
+                Cuidamos una colonia de gatos en Boatti al 46, en barrio oeste de Morón. Aquí proporcionamos alimentación diaria,
                 atención veterinaria y refugio seguro para más de 25 gatos que han hecho de este lugar su hogar.
               </p>
               <div className="space-y-6 mb-8">
@@ -619,7 +626,7 @@ export default function OesteGatitos() {
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-purple-100 to-blue-100 rounded-xl">
                   <Star className="h-6 w-6 text-purple-600" />
-                  <span className="text-gray-800 font-medium">Atención veterinaria regular</span>
+                  <span className="text-gray-800 font-medium">Seguimiento personalizado</span>
                 </div>
               </div>
              <Button 
@@ -674,8 +681,7 @@ export default function OesteGatitos() {
               </h4>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Todos los días salimos a recorrer las calles de Morón con bolsas llenas de alimento.
-                Conocemos cada rincón donde nos esperan nuestros amigos. Estos recorridos no solo garantizan que ningún gatito pase hambre, sino que también nos permiten
-                detectar nuevos rescates
+                Conocemos cada rincón donde nos esperan nuestros amigos.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                 <strong>Sin embargo, no nos deja conformes que vivan en la calle y su destino sea incierto, por eso buscamos personas que quieran transitar para que la espera de una familia sea en un lugar digno</strong>
@@ -688,7 +694,7 @@ export default function OesteGatitos() {
                   </div>
                   <div>
                     <h5 className="font-semibold text-gray-800">Horarios Fijos</h5>
-                    <p className="text-gray-600">Mañana: 8:00 AM | Tarde: 6:00 PM</p>
+                    <p className="text-gray-600">Tarde: 15:00 HS | Noche: 21:00 HS</p>
                   </div>
                 </div>
 
@@ -735,6 +741,12 @@ export default function OesteGatitos() {
                       Av. Rivadavia
                     </div>
 
+                    {/* Mitre (horizontal medio) */}
+                    <div className="absolute top-1/2 left-0 right-0 h-3 bg-gray-400 opacity-80 -translate-y-1/2"></div>
+                    <div className="absolute top-1/2 left-4 -translate-y-1/2 text-xs font-semibold text-gray-700 bg-white/80 px-2 py-1 rounded">
+                      Mitre
+                    </div>
+
                     {/* Pellegrini (horizontal inferior) */}
                     <div className="absolute bottom-16 left-0 right-0 h-3 bg-gray-400 opacity-80"></div>
                     <div className="absolute bottom-12 left-4 text-xs font-semibold text-gray-700 bg-white/80 px-2 py-1 rounded">
@@ -749,16 +761,16 @@ export default function OesteGatitos() {
 
                     {/* Números de calles */}
                     <div className="absolute top-2 left-16 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
-                      100
+                      Yatay
                     </div>
                     <div className="absolute top-2 left-28 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
-                      200
+                      Boatti
                     </div>
                     <div className="absolute top-2 right-28 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
-                      400
+                      Uruguay
                     </div>
                     <div className="absolute top-2 right-16 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
-                      500
+                      
                     </div>
                   </div>
 
@@ -854,12 +866,215 @@ export default function OesteGatitos() {
                   <p className="text-sm text-gray-600 mb-4">
                     ¿Te gustaría darles un techo hasta encontrar su familia soñada?
                   </p>
-                     <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300"
-                      onClick={() => window.open("https://wa.me/5491138241728?text=Hola!%20Estoy%20interesado%20en%20transitar,%20¿Podrías%20darme%20más%20información?", "_blank")}>
-                    <Heart className="mr-2 h-4 w-4" />
-                    Quiero Transitar
-                  </Button>
+                    <Button 
+                      className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300"
+                      onClick={() => {
+                        const phone = "5491124861530";
+                        const message = "Hola! Estoy interesado en transitar, podrías darme mas información?";
+                        const encodedMessage = encodeURIComponent(message);
+                        window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
+                      }}
+                    >
+                      <Heart className="mr-2 h-4 w-4" />
+                      Quiero Transitar
+                    </Button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Castraciones */}
+      <section id="castraciones" className="py-20 px-4 bg-gradient-to-br from-blue-50/80 via-purple-50/80 to-pink-50/80">
+        <div className="container mx-auto">
+          <div className="gsap-fade-up text-center mb-16">
+            <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Programa de Castraciones
+            </h3>
+            <p className="textext-xl text-gray-700 max-w-3xl mx-auto">
+             Éste proceso es llevado a cabo por Yanel, quien coordina de forma eficáz la logística para que tanto los gatitos rescatados como a los que se estan transitando
+             sean castrados en el centro veterinario "Zoonosis" de Morón
+            </p>
+          </div>
+
+          {/* Video Section */}
+          <div className="gsap-zoom mb-16">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative bg-gradient-to-br from-white/90 to-blue-50/90 p-8 rounded-2xl shadow-2xl">
+                <h4 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  En Zoonosis, La Castración Es Gratuita
+                </h4>
+                
+                {/* Video Container */}
+                <div className="relative w-full max-w-sm mx-auto h-96 md:h-[600px] bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden shadow-lg mb-6">
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    id="castration-video"
+                  >
+                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Video%20de%20WhatsApp%202025-05-30%20a%20las%2012.03.47_923fdb22-8UFW693w8jOPFmSKsqfeQDjLHnDSWb.mp4" type="video/mp4" />
+                  </video>
+                  
+                  {/* Video Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                  
+                  {/* Video Controls */}
+                  <div className="absolute bottom-4 right-4 flex gap-3">
+                    <Button
+                      size="icon"
+                      className="bg-white/90 hover:bg-white text-gray-800 shadow-lg"
+                      onClick={() => {
+                        const video = document.getElementById('castration-video') as HTMLVideoElement;
+                        if (video) {
+                          video.muted = !video.muted;
+                        }
+                      }}
+                    >
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.5 13.5H2a1 1 0 01-1-1V7.5a1 1 0 011-1h2.5l3.883-3.316a1 1 0 011.617.816zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.983 5.983 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.984 3.984 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
+                      </svg>
+                    </Button>
+                    <Button
+                      size="icon"
+                      className="bg-white/90 hover:bg-white text-gray-800 shadow-lg"
+                      onClick={() => {
+                        const video = document.getElementById('castration-video') as HTMLVideoElement;
+                        if (video) {
+                          if (video.paused) {
+                            video.play();
+                          } else {
+                            video.pause();
+                          }
+                        }
+                      }}
+                    >
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                    </Button>
+                  </div>
+                </div>
+
+                <p className="text-lg text-gray-700 text-center leading-relaxed">
+                  En este video vas a encontrar información con ubicación fechas y horarios disponibles.
+                </p>
+              </div>
+            </div>
+
+            {/* Information Cards */}
+            <div className="grid lg:grid-cols-2 gap-16 items-start mb-16 mt-12">
+              <div className="gsap-slide-left">
+                <h4 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-4">
+                  ¿Como Nos Organizamos?
+                </h4>
+                
+                <div className="space-y-6">
+                  <Card className="bg-gradient-to-br from-white/90 to-blue-50/90 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center">
+                        <Car className="h-6 w-6 text-white" />
+                        </div>
+                        <h5 className="text-xl font-bold text-gray-800">Organizar el traslado</h5>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed">
+                      Primero se organiza su traslado. Si está en la calle o en la colonia, se lo lleva con cuidado a una jaula. En caso de que esté en tránsito, se coordina el procedimiento con su cuidador.
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-br from-white/90 to-green-50/90 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                        <Phone className="h-6 w-6 text-white" />
+                        </div>
+                        <h5 className="text-xl font-bold text-gray-800">Sacar turno</h5>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed">
+                      Se solicita un turno en el centro veterinario Zoonosis, respetando los pasos necesarios. 
+                      Se asegura el ayuno previo obligatorio para garantizar una intervención segura. Todo el proceso se lleva adelante con responsabilidad y compromiso.
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-br from-white/90 to-purple-50/90 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+                          <Users className="h-6 w-6 text-white" />
+                        </div>
+                        <h5 className="text-xl font-bold text-gray-800">Devolución y recuperación</h5>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed">
+                      Finalizada la castración, el gato regresa a su cuidador, o la colonia para su recuperación. Desde ese momento, se inicia una campaña intensa para encontrarle un hogar a aquellos gatos dósiles.
+                       En el caso de los ferales, siguen viviendo en la colonia pero evitamos la sobrepoblación de la misma.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              <div className="gsap-slide-right">
+                <h4 className="text-3xl font-bold mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mt-4">
+                  Centro Veterinario Zoonosis
+                </h4>
+                
+                {/* Photo Gallery */}
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="gsap-zoom">
+                    <Image
+                      src="https://i.imgur.com/c2c1hK9.png"
+                      alt="Zoonosis Morón 1"
+                      width={300}
+                      height={200}
+                      className="rounded-xl shadow-lg w-full h-32 object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="gsap-zoom">
+                    <Image
+                      src="https://i.imgur.com/VOjuJS8.png"
+                      alt="Zoonosis Morón 2"
+                      width={300}
+                      height={200}
+                      className="rounded-xl shadow-lg w-full h-32 object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="gsap-zoom col-span-2">
+                    <Image
+                      src="https://i.imgur.com/8lJO8vP.png"
+                      alt="Zoonosis Morón 3"
+                      width={600}
+                      height={250}
+                      className="rounded-xl shadow-lg w-full h-40 object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Statistics */}
+                <div className="space-y-6">
+                    <div className="flex items-center justify-center gap-4 p-6 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl">
+                      <MapPin className="h-8 w-8 text-blue-600" />
+                      <div className="text-left">
+                        <h5 className="text-xl font-bold text-gray-800">Ubicación</h5>
+                        <p className="text-lg text-gray-700">Curupaytí 1129, Morón</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-center gap-4 p-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl">
+                      <svg className="h-8 w-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                      </svg>
+                      <div className="text-left">
+                        <h5 className="text-xl font-bold text-gray-800">Contacto</h5>
+                        <p className="text-lg text-gray-700">4645-2624</p>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -907,7 +1122,7 @@ export default function OesteGatitos() {
                 </div>
                 <div className="flex items-center gap-4 p-3 bg-gradient-to-r from-gray-700/50 to-gray-600/50 rounded-xl">
                   <MapPin className="h-6 w-6 text-blue-400" />
-                  <span className="text-gray-200">Zona Oeste, Buenos Aires</span>
+                  <span className="text-gray-200">Morón, Buenos Aires</span>
                 </div>
               </div>
             </div>
