@@ -321,25 +321,21 @@ export default function OesteGatitos() {
               "Ahí, en el margen, viven silenciosos y olvidados. Pero cada gato callejero tiene una historia que vale la pena contar… y salvar."
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-  onClick={() => {
-    const alias = "oestegatitos.uala";
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    if (isMobile) {
-      // Intenta abrir la app de Mercado Pago directamente con el alias
-      window.location.href = `mercadopago://send?alias=${encodeURIComponent(alias)}`;
-    } else {
-      // Copia el alias al portapapeles y avisa al usuario
-      navigator.clipboard.writeText(alias);
-      alert("El alias 'oestegatitos.uala' fue copiado al portapapeles. Pegalo en Mercado Pago para donar.");
-      // Abre la página de transferencias de Mercado Pago
-      window.open("https://www.mercadopago.com.ar/money-out/transfer", "_blank");
-    }
-  }}
->
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              onClick={() => {
+                const alias = "oestegatitos.uala";
+                navigator.clipboard.writeText(alias);
+                alert("El alias 'oestegatitos.uala' fue copiado al portapapeles. Pegalo en Mercado Pago para donar.");
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                if (isMobile) {
+                  window.location.href = "mercadopago://";
+                } else {
+                  window.open("https://www.mercadopago.com.ar/money-out/transfer", "_blank");
+                }
+              }}
+            >
     <Image 
     src="https://i.imgur.com/FtP83BE.png" 
     alt="Mercado Pago Logo" 
@@ -767,7 +763,6 @@ export default function OesteGatitos() {
                       Boatti
                     </div>
                     <div className="absolute top-2 right-28 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
-                      Uruguay
                     </div>
                     <div className="absolute top-2 right-16 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
                       
@@ -781,7 +776,7 @@ export default function OesteGatitos() {
                         <Paw className="h-4 w-4 text-white" />
                       </div>
                       <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Punto 1: Plaza Morón
+                        al 200
                       </div>
                     </div>
                   </div>
@@ -795,7 +790,7 @@ export default function OesteGatitos() {
                         <Paw className="h-4 w-4 text-white" />
                       </div>
                       <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Punto 2: Esquina 400
+                        al 300
                       </div>
                     </div>
                   </div>
@@ -809,7 +804,7 @@ export default function OesteGatitos() {
                         <Paw className="h-4 w-4 text-white" />
                       </div>
                       <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Punto 3: Cerca Pellegrini
+                        al 400
                       </div>
                     </div>
                   </div>
@@ -823,7 +818,7 @@ export default function OesteGatitos() {
                         <Paw className="h-4 w-4 text-white" />
                       </div>
                       <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Punto 4: Centro Morón
+                        al 500
                       </div>
                     </div>
                   </div>
@@ -870,7 +865,7 @@ export default function OesteGatitos() {
                       className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300"
                       onClick={() => {
                         const phone = "5491124861530";
-                        const message = "Hola! Estoy interesado en transitar, podrías darme mas información?";
+                        const message = "Hola Estoy interesado en transitar, podrías darme mas información?";
                         const encodedMessage = encodeURIComponent(message);
                         window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
                       }}
