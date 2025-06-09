@@ -327,7 +327,7 @@ export default function OesteGatitos() {
               onClick={() => {
                 const alias = "oestegatitos.uala";
                 navigator.clipboard.writeText(alias);
-                alert("El alias 'oestegatitos.uala' fue copiado al portapapeles. Pegalo en Mercado Pago para donar.");
+                alert("El alias 'oestegatitos.uala' fue copiado exitosamente!.");
                 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 if (isMobile) {
                   window.location.href = "mercadopago://";
