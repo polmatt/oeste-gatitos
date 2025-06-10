@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import SplashScreen from "@/components/splash-screen"
 import {
   Heart,
   MapPin,
@@ -222,6 +223,7 @@ function Carousel({ images }: { images: string[] }) {
 }
 
 export default function OesteGatitos() {
+  const [showSplash, setShowSplash] = useState(true)
   useGSAPAnimations()
 
   const rescueImages = [
@@ -237,6 +239,14 @@ export default function OesteGatitos() {
     "https://i.imgur.com/d3gtDlu.png",
     "https://i.imgur.com/xxVpZXO.png",
   ]
+
+  const handleSplashComplete = () => {
+    setShowSplash(false)
+  }
+
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-100 via-pink-50 to-purple-100">
