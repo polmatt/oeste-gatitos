@@ -1098,7 +1098,6 @@ export default function OesteGatitos() {
                 className="rounded-full object-cover transition-transform duration-300 hover:scale-110 hover: cursor-pointer"
                 priority
                />
-               <a href="#inicio"></a>
                 </div>
                 <h4 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
                   Oeste Gatitos
