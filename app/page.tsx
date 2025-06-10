@@ -22,141 +22,6 @@ import {
   PawPrintIcon as Paw,
 } from "lucide-react"
 
-// Hook para GSAP animations
-function useGSAPAnimations() {
-  useEffect(() => {
-    // Importar GSAP dinámicamente
-    import("gsap").then((gsap) => {
-      import("gsap/ScrollTrigger").then((ScrollTrigger) => {
-        gsap.default.registerPlugin(ScrollTrigger.ScrollTrigger)
-
-        // Animación para elementos que aparecen desde abajo
-        gsap.default.fromTo(
-          ".gsap-fade-up",
-          {
-            opacity: 0,
-            y: 60,
-            scale: 0.9,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            ease: "power3.out",
-            stagger: 0.2,
-            scrollTrigger: {
-              trigger: ".gsap-fade-up",
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        )
-
-        // Animación para elementos que aparecen desde la izquierda
-        gsap.default.fromTo(
-          ".gsap-slide-left",
-          {
-            opacity: 0,
-            x: -80,
-            rotation: -5,
-          },
-          {
-            opacity: 1,
-            x: 0,
-            rotation: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ".gsap-slide-left",
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        )
-
-        // Animación para elementos que aparecen desde la derecha
-        gsap.default.fromTo(
-          ".gsap-slide-right",
-          {
-            opacity: 0,
-            x: 80,
-            rotation: 5,
-          },
-          {
-            opacity: 1,
-            x: 0,
-            rotation: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ".gsap-slide-right",
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        )
-
-        // Animación para imágenes con efecto zoom
-        gsap.default.fromTo(
-          ".gsap-zoom",
-          {
-            opacity: 0,
-            scale: 0.7,
-            filter: "blur(10px)",
-          },
-          {
-            opacity: 1,
-            scale: 1,
-            filter: "blur(0px)",
-            duration: 1.5,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ".gsap-zoom",
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        )
-
-        // Animación para tarjetas con efecto flotante
-        gsap.default.fromTo(
-          ".gsap-float",
-          {
-            opacity: 0,
-            y: 40,
-            rotationX: 15,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            rotationX: 0,
-            duration: 1,
-            ease: "power3.out",
-            stagger: 0.15,
-            scrollTrigger: {
-              trigger: ".gsap-float",
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        )
-
-        // Animación para el hero con efecto parallax
-        gsap.default.to(".hero-bg", {
-          yPercent: -50,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".hero-section",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        })
-      })
-    })
-  }, [])
-}
 
 // Componente de carrusel
 function Carousel({ images }: { images: string[] }) {
@@ -224,7 +89,139 @@ function Carousel({ images }: { images: string[] }) {
 
 export default function OesteGatitos() {
   const [showSplash, setShowSplash] = useState(true)
-  useGSAPAnimations()
+  useEffect(() => {
+    if (!showSplash) {
+      import("gsap").then((gsap) => {
+        import("gsap/ScrollTrigger").then((ScrollTrigger) => {
+          gsap.default.registerPlugin(ScrollTrigger.ScrollTrigger)
+  
+          // Animación para elementos que aparecen desde abajo
+          gsap.default.fromTo(
+            ".gsap-fade-up",
+            {
+              opacity: 0,
+              y: 60,
+              scale: 0.9,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 1,
+              ease: "power3.out",
+              stagger: 0.2,
+              scrollTrigger: {
+                trigger: ".gsap-fade-up",
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          )
+  
+          // Animación para elementos que aparecen desde la izquierda
+          gsap.default.fromTo(
+            ".gsap-slide-left",
+            {
+              opacity: 0,
+              x: -80,
+              rotation: -5,
+            },
+            {
+              opacity: 1,
+              x: 0,
+              rotation: 0,
+              duration: 1.2,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".gsap-slide-left",
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          )
+  
+          // Animación para elementos que aparecen desde la derecha
+          gsap.default.fromTo(
+            ".gsap-slide-right",
+            {
+              opacity: 0,
+              x: 80,
+              rotation: 5,
+            },
+            {
+              opacity: 1,
+              x: 0,
+              rotation: 0,
+              duration: 1.2,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".gsap-slide-right",
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          )
+  
+          // Animación para imágenes con efecto zoom
+          gsap.default.fromTo(
+            ".gsap-zoom",
+            {
+              opacity: 0,
+              scale: 0.7,
+              filter: "blur(10px)",
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              filter: "blur(0px)",
+              duration: 1.5,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".gsap-zoom",
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          )
+  
+          // Animación para tarjetas con efecto flotante
+          gsap.default.fromTo(
+            ".gsap-float",
+            {
+              opacity: 0,
+              y: 40,
+              rotationX: 15,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              rotationX: 0,
+              duration: 1,
+              ease: "power3.out",
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: ".gsap-float",
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          )
+  
+          // Animación para el hero con efecto parallax
+          gsap.default.to(".hero-bg", {
+            yPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".hero-section",
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          })
+        })
+      })
+    }
+  }, [showSplash])
 
   const rescueImages = [
     "https://i.imgur.com/ruuD7jB.png",
@@ -386,12 +383,12 @@ export default function OesteGatitos() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="gsap-slide-left">
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Somos Nati, Juli y Mai, un grupo de amigas apasionadas por el bienestar animal que decidimos unir fuerzas para hacer la
-                diferencia en la vida de los gatitos más vulnerables de nuestra comunidad.
+                Somos Nati, Juli y Mai, fundadoras de esta pequeña organización. Nos conocimos por la misma voluntad de ayudar a los gatitos que se encuentran en situación de vulnerabilidad
+                y abandono. Desde hace varios años cada una sintió el interés de ayudar a su manera pero en 2023 decidimos unir fuerzas y crear Oeste Gatitos
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                 Con la suma de nuevas tareas como traslados, cuidados y castraciones, sumamos a nuevos integrantes como Virgi, Lean y Yanel, que contribuyeron al crecimiento
-                dando lugar a una pequeña organización dedicada al rescate, rehabilitación y búsqueda de hogares amorosos.
+                y fortalecimiento de este grupo.
               </p>
               <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl shadow-lg">
                 <Users className="h-10 w-10 text-orange-600" />
@@ -402,7 +399,7 @@ export default function OesteGatitos() {
             </div>
             <div className="gsap-zoom">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="https://i.imgur.com/hbMZvQS.png"
                 alt="Nuestro equipo"
                 width={500}
                 height={400}
@@ -609,7 +606,7 @@ export default function OesteGatitos() {
               Nuestra Colonia
             </h3>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Un hogar seguro donde cuidamos con amor a más de 25 gatitos
+              Un hogar seguro donde cuidamos con amor a más de 40 gatitos
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -619,7 +616,7 @@ export default function OesteGatitos() {
               </h4>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                 Cuidamos una colonia de gatos en Boatti al 46, en barrio oeste de Morón. Aquí proporcionamos alimentación diaria,
-                atención veterinaria y refugio seguro para más de 25 gatos que han hecho de este lugar su hogar.
+                atención veterinaria y refugio seguro para más de 40 gatos que han hecho de este lugar su hogar.
               </p>
               <div className="space-y-6 mb-8">
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-orange-100 to-pink-100 rounded-xl">
@@ -1101,6 +1098,7 @@ export default function OesteGatitos() {
                 className="rounded-full object-cover transition-transform duration-300 hover:scale-110 hover: cursor-pointer"
                 priority
                />
+               <a href="#inicio"></a>
                 </div>
                 <h4 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
                   Oeste Gatitos

@@ -162,7 +162,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
         {/* Subtítulo */}
         <p className="splash-subtitle text-lg md:text-xl text-gray-600 max-w-md mx-auto leading-relaxed">
-          Rescatando, cuidando y alimentando desde 2019
+          Rescatando, cuidando y alimentando desde 2023
         </p>
 
         {/* Indicador de carga */}
