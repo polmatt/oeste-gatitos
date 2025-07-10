@@ -329,21 +329,59 @@ export default function OesteGatitos() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button
-              size="lg"
-              className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => {
-                const alias = "oestegatitos.uala";
-                navigator.clipboard.writeText(alias);
-                alert("El alias 'oestegatitos.uala' fue copiado exitosamente!.");
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                if (isMobile) {
-                  window.location.href = "mercadopago://";
-                } else {
-                  window.open("https://www.mercadopago.com.ar/money-out/transfer", "_blank");
-                }
-              }}
-            >
-    <Image 
+  size="lg"
+  className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+  onClick={() => {
+    const alias = "oestegatitos.uala";
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isAndroid = /android/.test(userAgent);
+    const isIOS = /iphone|ipad|ipod/.test(userAgent);
+    const isInInstagram = /instagram/.test(userAgent);
+    const isInApp = isInInstagram || /fban|fbav/.test(userAgent);
+
+    // Copiar alias al portapapeles
+    navigator.clipboard.writeText(alias).then(() => {
+      if (isInApp) {
+        // Si está en navegador de Instagram/Facebook, mostrar instrucciones
+        alert(`Alias copiado: ${alias}\n\nPara continuar:\n1. Abre MercadoPago desde tu pantalla de inicio\n2. Ve a "Transferir"\n3. Pega el alias copiado`);
+      } else if (isAndroid) {
+        // Android: intentar abrir la app y como fallback el navegador
+        const mpAppUrl = `mercadopago://send?alias=${encodeURIComponent(alias)}`;
+        const mpWebUrl = `https://www.mercadopago.com.ar/money-out/transfer`;
+        
+        // Intentar abrir la app
+        window.location.href = mpAppUrl;
+        
+        // Fallback después de 2 segundos si la app no se abre
+        setTimeout(() => {
+          const confirmOpen = confirm(`Alias copiado: ${alias}\n\n¿Abrir MercadoPago en el navegador?`);
+          if (confirmOpen) {
+            window.open(mpWebUrl, '_blank');
+          }
+        }, 2000);
+      } else if (isIOS) {
+        // iOS: mantener comportamiento actual que funciona
+        const mpAppUrl = `mercadopago://send?alias=${encodeURIComponent(alias)}`;
+        window.location.href = mpAppUrl;
+        
+        setTimeout(() => {
+          const confirmOpen = confirm(`Si MercadoPago no se abrió automáticamente:\n\nAlias copiado: ${alias}\n\n¿Abrir en navegador?`);
+          if (confirmOpen) {
+            window.open("https://www.mercadopago.com.ar/money-out/transfer", '_blank');
+          }
+        }, 1500);
+      } else {
+        // Desktop o otros dispositivos
+        alert(`Alias copiado: ${alias}\n\nVe a mercadopago.com.ar para realizar la transferencia`);
+        window.open("https://www.mercadopago.com.ar/money-out/transfer", '_blank');
+      }
+    }).catch(() => {
+      // Fallback si falla la copia al portapapeles
+      alert(`Copia este alias para donar: ${alias}\n\nLuego ve a MercadoPago > Transferir`);
+    });
+  }}
+>
+  <Image 
     src="https://i.imgur.com/FtP83BE.png" 
     alt="Mercado Pago Logo" 
     width={50} 
@@ -351,7 +389,7 @@ export default function OesteGatitos() {
     className="mr-3" 
   />
   Realizar Una Donación
-              </Button>
+</Button>
               <Button
                 size="lg"
                 variant="outline"
