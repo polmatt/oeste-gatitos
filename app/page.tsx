@@ -335,43 +335,45 @@ export default function OesteGatitos() {
                     key={item.href}
                     className="text-left text-xl font-medium text-gray-700 hover:text-orange-600 transition-all duration-300 py-3 border-b border-gray-200 hover:border-orange-400 hover:bg-orange-50 px-2 rounded"
                     onClick={() => {
-                      if (item.href === "#inicio") {
-                        // Para inicio, ir al top de la página
-                        window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth'
-                        });
-                      } else {
-                        // Para las demás secciones, ajustar offset según el dispositivo
-                        const element = document.querySelector(item.href) as HTMLElement | null;
-                        if (element) {
-                          // Detectar si es mobile real vs desktop/emulación
-                          const isMobileDevice = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                          const isSmallScreen = window.innerWidth <= 768;
+                      // Cerrar menú inmediatamente
+                      setIsMobileMenuOpen(false);
 
-                          let headerOffset;
-
-                          if (isMobileDevice && isSmallScreen) {
-                            // Mobile real: offset más grande para compensar barras del navegador
-                            headerOffset = 120;
-                          } else if (isSmallScreen) {
-                            // Emulación mobile en desktop
-                            headerOffset = 100;
-                          } else {
-                            // Desktop
-                            headerOffset = 100;
-                          }
-
-                          const elementPosition = element.offsetTop;
-                          const offsetPosition = elementPosition - headerOffset;
-
+                      // Esperar a que se cierre el menú antes de hacer scroll
+                      setTimeout(() => {
+                        if (item.href === "#inicio") {
                           window.scrollTo({
-                            top: Math.max(0, offsetPosition),
+                            top: 0,
                             behavior: 'smooth'
                           });
+                        } else {
+                          const element = document.querySelector(item.href) as HTMLElement | null;
+                          if (element) {
+                            // Obtener altura real del header
+                            const header = document.querySelector('header') as HTMLElement;
+                            const headerHeight = header ? header.offsetHeight : 80;
+
+                            // Offset adicional para mobile
+                            const isMobile = window.innerWidth <= 768;
+                            const viewportHeight = window.innerHeight;
+
+                            // Calculamos un offset más agresivo para mobile
+                            let extraOffset = 0;
+                            if (isMobile) {
+                              // En mobile, agregar más offset para compensar barras de navegación
+                              extraOffset = viewportHeight < 700 ? 60 : 40; // Más offset en pantallas pequeñas
+                            }
+
+                            const totalOffset = headerHeight + extraOffset;
+                            const elementPosition = element.offsetTop;
+                            const scrollPosition = elementPosition - totalOffset;
+
+                            window.scrollTo({
+                              top: Math.max(0, scrollPosition),
+                              behavior: 'smooth'
+                            });
+                          }
                         }
-                      }
-                      setIsMobileMenuOpen(false);
+                      }, 300); // Delay para que se cierre el menú
                     }}
                   >
                     {item.label}
