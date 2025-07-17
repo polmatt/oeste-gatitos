@@ -345,7 +345,7 @@ export default function OesteGatitos() {
                         // Para las demás secciones, usar el comportamiento normal
                         const element = document.querySelector(item.href) as HTMLElement | null;
                         if (element) {
-                          const headerOffset = 100;
+                          const headerOffset = 50;
                           const elementPosition = element.offsetTop;
                           const offsetPosition = elementPosition - headerOffset;
 
