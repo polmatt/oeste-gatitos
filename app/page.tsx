@@ -45,9 +45,8 @@ function Carousel({ images }: { images: string[] }) {
       {images.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-            index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
-          }`}
+          className={`absolute inset-0 transition-all duration-700 ease-in-out ${index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
+            }`}
         >
           <Image src={image || "/placeholder.svg"} alt={`Rescate ${index + 1}`} fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -76,9 +75,8 @@ function Carousel({ images }: { images: string[] }) {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "bg-white scale-125" : "bg-white/60 hover:bg-white/80"
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-white scale-125" : "bg-white/60 hover:bg-white/80"
+              }`}
             onClick={() => setCurrentIndex(index)}
           />
         ))}
@@ -89,12 +87,13 @@ function Carousel({ images }: { images: string[] }) {
 
 export default function OesteGatitos() {
   const [showSplash, setShowSplash] = useState(true)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   useEffect(() => {
     if (!showSplash) {
       import("gsap").then((gsap) => {
         import("gsap/ScrollTrigger").then((ScrollTrigger) => {
           gsap.default.registerPlugin(ScrollTrigger.ScrollTrigger)
-  
+
           // Animación para elementos que aparecen desde abajo
           gsap.default.fromTo(
             ".gsap-fade-up",
@@ -117,7 +116,7 @@ export default function OesteGatitos() {
               },
             },
           )
-  
+
           // Animación para elementos que aparecen desde la izquierda
           gsap.default.fromTo(
             ".gsap-slide-left",
@@ -139,7 +138,7 @@ export default function OesteGatitos() {
               },
             },
           )
-  
+
           // Animación para elementos que aparecen desde la derecha
           gsap.default.fromTo(
             ".gsap-slide-right",
@@ -161,7 +160,7 @@ export default function OesteGatitos() {
               },
             },
           )
-  
+
           // Animación para imágenes con efecto zoom
           gsap.default.fromTo(
             ".gsap-zoom",
@@ -183,7 +182,7 @@ export default function OesteGatitos() {
               },
             },
           )
-  
+
           // Animación para tarjetas con efecto flotante
           gsap.default.fromTo(
             ".gsap-float",
@@ -206,7 +205,7 @@ export default function OesteGatitos() {
               },
             },
           )
-  
+
           // Animación para el hero con efecto parallax
           gsap.default.to(".hero-bg", {
             yPercent: -50,
@@ -253,70 +252,129 @@ export default function OesteGatitos() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-            <Image
-            src="https://i.imgur.com/8gFuFe0.png"
-            alt="Oeste Gatitos Logo"
-            width={50}
-            height={50}
-            className="rounded-full object-cover transition-transform duration-300 hover:scale-110 hover: cursor-pointer"
-            priority
-          />
+                <Image
+                  src="https://i.imgur.com/8gFuFe0.png"
+                  onClick={() => {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth'
+                    });
+                  }}
+                  alt="Oeste Gatitos Logo"
+                  width={50}
+                  height={50}
+                  className="rounded-full object-cover transition-transform duration-300 hover:scale-110 hover: cursor-pointer"
+                  priority
+                />
               </div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
                 Oeste Gatitos
               </h1>
             </div>
+
+            {/* Navegación Desktop */}
             <nav className="hidden md:flex gap-6">
               <a href="#inicio" className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium">
                 Inicio
               </a>
-              <a
-                href="#nosotros"
-                className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
-              >
+              <a href="#nosotros" className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium">
                 Nosotros
               </a>
-              <a
-                href="#rescates"
-                className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
-              >
+              <a href="#rescates" className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium">
                 Rescates
               </a>
-              <a
-                href="#colonia"
-                className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
-              >
+              <a href="#colonia" className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium">
                 Colonia
               </a>
-              <a
-                href="#recorridos"
-                className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
-              >
+              <a href="#recorridos" className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium">
                 Recorridos
               </a>
-              <a
-                href="#castraciones"
-                className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
-              >
+              <a href="#castraciones" className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium">
                 Castraciones
               </a>
-              <a
-                href="#contacto"
-                className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium"
-              >
+              <a href="#contacto" className="text-gray-600 hover:text-orange-600 transition-all duration-300 font-medium">
                 Contacto
               </a>
             </nav>
+
+            {/* Botón Hamburguesa Mobile */}
+            <button
+              className="md:hidden z-50 relative w-8 h-8 flex flex-col justify-center items-center"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 mt-1 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 mt-1 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            </button>
           </div>
         </div>
+
+        {/* Menú Mobile */}
+        {isMobileMenuOpen && (
+          <div className="bg-white w-80 h-full ml-auto shadow-2xl border-l border-orange-200 mobile-menu-slide" onClick={(e) => e.stopPropagation()}>    <div className="bg-white w-80 h-full ml-auto shadow-2xl border-l border-orange-200" onClick={(e) => e.stopPropagation()}>
+            <div className="p-8 pt-14">
+              {/* Botón de cerrar */}
+              <button
+                className="absolute top- right-4 w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+
+              </button>
+
+              <nav className="flex flex-col gap-4">
+                {[
+                  { href: "#inicio", label: "Inicio" },
+                  { href: "#nosotros", label: "Nosotros" },
+                  { href: "#rescates", label: "Rescates" },
+                  { href: "#colonia", label: "Colonia" },
+                  { href: "#recorridos", label: "Recorridos" },
+                  { href: "#castraciones", label: "Castraciones" },
+                  { href: "#contacto", label: "Contacto" }
+                ].map((item) => (
+                  <button
+                    key={item.href}
+                    className="text-left text-xl font-medium text-gray-700 hover:text-orange-600 transition-all duration-300 py-3 border-b border-gray-200 hover:border-orange-400 hover:bg-orange-50 px-2 rounded"
+                    onClick={() => {
+                      if (item.href === "#inicio") {
+                        // Para inicio, ir al top de la página
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth'
+                        });
+                      } else {
+                        // Para las demás secciones, usar el comportamiento normal
+                        const element = document.querySelector(item.href) as HTMLElement | null;
+                        if (element) {
+                          const headerOffset = 100;
+                          const elementPosition = element.offsetTop;
+                          const offsetPosition = elementPosition - headerOffset;
+
+                          window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                          });
+                        }
+                      }
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </nav>
+
+            </div>
+          </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
       <section id="inicio" className="hero-section relative py-32 px-4 overflow-hidden" style={{
-    backgroundImage: "url('https://i.imgur.com/EeBnXUs.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}>
+        backgroundImage: "url('https://i.imgur.com/EeBnXUs.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}>
         <div className="hero-bg absolute inset-0 bg-gradient-to-br from-orange-200 via-pink-200 to-purple-300 opacity-60"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
         <div className="container mx-auto text-center relative z-10">
@@ -328,79 +386,34 @@ export default function OesteGatitos() {
               "Ahí, en el margen, viven silenciosos y olvidados. Pero cada gato callejero tiene una historia que vale la pena contar… y salvar."
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button
-  size="lg"
-  className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-  onClick={() => {
-    const alias = "oestegatitos.uala";
-    const userAgent = navigator.userAgent.toLowerCase();
-    const isAndroid = /android/.test(userAgent);
-    const isIOS = /iphone|ipad|ipod/.test(userAgent);
-    const isInInstagram = /instagram/.test(userAgent);
-    const isInApp = isInInstagram || /fban|fbav/.test(userAgent);
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                onClick={() => {
+                  window.open("https://link.mercadopago.com.ar/oestegatitoss", "_blank");
+                }}
+              >
 
-    // Copiar alias al portapapeles
-    navigator.clipboard.writeText(alias).then(() => {
-      if (isInApp) {
-        // Si está en navegador de Instagram/Facebook, mostrar instrucciones
-        alert(`Alias copiado: ${alias}\n\nPara continuar:\n1. Abre MercadoPago desde tu pantalla de inicio\n2. Ve a "Transferir"\n3. Pega el alias copiado`);
-      } else if (isAndroid) {
-        // Android: intentar abrir la app y como fallback el navegador
-        const mpAppUrl = `mercadopago://send?alias=${encodeURIComponent(alias)}`;
-        const mpWebUrl = `https://www.mercadopago.com.ar/money-out/transfer`;
-        
-        // Intentar abrir la app
-        window.location.href = mpAppUrl;
-        
-        // Fallback después de 2 segundos si la app no se abre
-        setTimeout(() => {
-          const confirmOpen = confirm(`Alias copiado: ${alias}\n\n¿Abrir MercadoPago en el navegador?`);
-          if (confirmOpen) {
-            window.open(mpWebUrl, '_blank');
-          }
-        }, 2000);
-      } else if (isIOS) {
-        // iOS: mantener comportamiento actual que funciona
-        const mpAppUrl = `mercadopago://send?alias=${encodeURIComponent(alias)}`;
-        window.location.href = mpAppUrl;
-        
-        setTimeout(() => {
-          const confirmOpen = confirm(`Si MercadoPago no se abrió automáticamente:\n\nAlias copiado: ${alias}\n\n¿Abrir en navegador?`);
-          if (confirmOpen) {
-            window.open("https://www.mercadopago.com.ar/money-out/transfer", '_blank');
-          }
-        }, 1500);
-      } else {
-        // Desktop o otros dispositivos
-        alert(`Alias copiado: ${alias}\n\nVe a mercadopago.com.ar para realizar la transferencia`);
-        window.open("https://www.mercadopago.com.ar/money-out/transfer", '_blank');
-      }
-    }).catch(() => {
-      // Fallback si falla la copia al portapapeles
-      alert(`Copia este alias para donar: ${alias}\n\nLuego ve a MercadoPago > Transferir`);
-    });
-  }}
->
-  <Image 
-    src="https://i.imgur.com/FtP83BE.png" 
-    alt="Mercado Pago Logo" 
-    width={50} 
-    height={50} 
-    className="mr-3" 
-  />
-  Realizar Una Donación
-</Button>
+                <Image
+                  src="https://i.imgur.com/FtP83BE.png"
+                  alt="Mercado Pago Logo"
+                  width={50}
+                  height={50}
+                  className="mr-3"
+                />
+                Realizar Una Donación
+              </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-2 border-orange-400 text-orange-600 hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-500 hover:text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-   onClick={() => {
-    const lat = -34.64869; 
-    const lng = -58.61637;
-    
-    // Abrir Google Maps en una nueva pestaña
-    window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
-  }}
+                onClick={() => {
+                  const lat = -34.64869;
+                  const lng = -58.61637;
+
+                  // Abrir Google Maps en una nueva pestaña
+                  window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
+                }}
               >
                 <MapPin className="mr-3 h-6 w-6" />
                 Ubicación De La Colonia
@@ -414,7 +427,7 @@ export default function OesteGatitos() {
       <section id="nosotros" className="py-20 px-4 bg-gradient-to-r from-white/80 via-orange-50/80 to-pink-50/80">
         <div className="container mx-auto">
           <div className="gsap-fade-up text-center mb-16">
-         <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent pt-2 pb-2 pr-1">
+            <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent pt-2 pb-2 pr-1">
               ¿Quiénes Somos?
             </h3>
           </div>
@@ -670,16 +683,16 @@ export default function OesteGatitos() {
                   <span className="text-gray-800 font-medium">Seguimiento personalizado</span>
                 </div>
               </div>
-             <Button 
-              className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => {
-                const lat = -34.64869; 
-                const lng = -58.61637;
-                
-                // Abrir Google Maps en una nueva pestaña
-                window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
-              }}
-            >
+              <Button
+                className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 hover:from-orange-600 hover:via-pink-600 hover:to-purple-600 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                onClick={() => {
+                  const lat = -34.64869;
+                  const lng = -58.61637;
+
+                  // Abrir Google Maps en una nueva pestaña
+                  window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
+                }}
+              >
                 <MapPin className="mr-3 h-5 w-5" />
                 Ver Ubicación
               </Button>
@@ -767,7 +780,7 @@ export default function OesteGatitos() {
                   Mapa de Recorridos - Morón
                 </h4>
                 <div className="mt-6 text-center">
-                 <p className="text-sm text-gray-600 mb-2">
+                  <p className="text-sm text-gray-600 mb-2">
                     Cada punto representa un lugar donde los gatitos nos esperan fielmente
                   </p>
                 </div>
@@ -810,7 +823,7 @@ export default function OesteGatitos() {
                     <div className="absolute top-2 right-28 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
                     </div>
                     <div className="absolute top-2 right-16 text-xs font-medium text-gray-600 bg-white/70 px-1 rounded">
-                      
+
                     </div>
                   </div>
 
@@ -906,18 +919,18 @@ export default function OesteGatitos() {
                   <p className="text-sm text-gray-600 mb-4">
                     ¿Te gustaría darles un techo hasta encontrar su familia soñada?
                   </p>
-                    <Button 
-                      className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300"
-                      onClick={() => {
-                        const phone = "5491124861530";
-                        const message = "Hola Estoy interesado en transitar, podrías darme mas información?";
-                        const encodedMessage = encodeURIComponent(message);
-                        window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
-                      }}
-                    >
-                      <Heart className="mr-2 h-4 w-4" />
-                      Quiero Transitar
-                    </Button>
+                  <Button
+                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => {
+                      const phone = "5491124861530";
+                      const message = "Hola Estoy interesado en transitar, podrías darme mas información?";
+                      const encodedMessage = encodeURIComponent(message);
+                      window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
+                    }}
+                  >
+                    <Heart className="mr-2 h-4 w-4" />
+                    Quiero Transitar
+                  </Button>
                 </div>
               </div>
             </div>
@@ -933,8 +946,8 @@ export default function OesteGatitos() {
               Programa de Castraciones
             </h3>
             <p className="textext-xl text-gray-700 max-w-3xl mx-auto">
-             Éste proceso es llevado a cabo por Yanel, quien coordina de forma eficáz la logística para que tanto los gatitos rescatados como a los que se estan transitando
-             sean castrados en el centro veterinario "Zoonosis" de Morón
+              Éste proceso es llevado a cabo por Yanel, quien coordina de forma eficáz la logística para que tanto los gatitos rescatados como a los que se estan transitando
+              sean castrados en el centro veterinario "Zoonosis" de Morón
             </p>
           </div>
 
@@ -945,7 +958,7 @@ export default function OesteGatitos() {
                 <h4 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   En Zoonosis, La Castración Es Gratuita
                 </h4>
-                
+
                 {/* Video Container */}
                 <div className="relative w-full max-w-sm mx-auto h-96 md:h-[600px] bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden shadow-lg mb-6">
                   <video
@@ -958,10 +971,10 @@ export default function OesteGatitos() {
                   >
                     <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Video%20de%20WhatsApp%202025-05-30%20a%20las%2012.03.47_923fdb22-8UFW693w8jOPFmSKsqfeQDjLHnDSWb.mp4" type="video/mp4" />
                   </video>
-                  
+
                   {/* Video Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
-                  
+
                   {/* Video Controls */}
                   <div className="absolute bottom-4 right-4 flex gap-3">
                     <Button
@@ -1011,18 +1024,18 @@ export default function OesteGatitos() {
                 <h4 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-4">
                   ¿Como Nos Organizamos?
                 </h4>
-                
+
                 <div className="space-y-6">
                   <Card className="bg-gradient-to-br from-white/90 to-blue-50/90 border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center">
-                        <Car className="h-6 w-6 text-white" />
+                          <Car className="h-6 w-6 text-white" />
                         </div>
                         <h5 className="text-xl font-bold text-gray-800">Organizar el traslado</h5>
                       </div>
                       <p className="text-gray-600 leading-relaxed">
-                      Primero se organiza su traslado. Si está en la calle o en la colonia, se lo lleva con cuidado a una jaula. En caso de que esté en tránsito, se coordina el procedimiento con su cuidador.
+                        Primero se organiza su traslado. Si está en la calle o en la colonia, se lo lleva con cuidado a una jaula. En caso de que esté en tránsito, se coordina el procedimiento con su cuidador.
                       </p>
                     </CardContent>
                   </Card>
@@ -1031,13 +1044,13 @@ export default function OesteGatitos() {
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-                        <Phone className="h-6 w-6 text-white" />
+                          <Phone className="h-6 w-6 text-white" />
                         </div>
                         <h5 className="text-xl font-bold text-gray-800">Sacar turno</h5>
                       </div>
                       <p className="text-gray-600 leading-relaxed">
-                      Se solicita un turno en el centro veterinario Zoonosis, respetando los pasos necesarios. 
-                      Se asegura el ayuno previo obligatorio para garantizar una intervención segura. Todo el proceso se lleva adelante con responsabilidad y compromiso.
+                        Se solicita un turno en el centro veterinario Zoonosis, respetando los pasos necesarios.
+                        Se asegura el ayuno previo obligatorio para garantizar una intervención segura. Todo el proceso se lleva adelante con responsabilidad y compromiso.
                       </p>
                     </CardContent>
                   </Card>
@@ -1051,8 +1064,8 @@ export default function OesteGatitos() {
                         <h5 className="text-xl font-bold text-gray-800">Devolución y recuperación</h5>
                       </div>
                       <p className="text-gray-600 leading-relaxed">
-                      Finalizada la castración, el gato regresa a su cuidador, o la colonia para su recuperación. Desde ese momento, se inicia una campaña intensa para encontrarle un hogar a aquellos gatos dósiles.
-                       En el caso de los ferales, siguen viviendo en la colonia pero evitamos la sobrepoblación de la misma.
+                        Finalizada la castración, el gato regresa a su cuidador, o la colonia para su recuperación. Desde ese momento, se inicia una campaña intensa para encontrarle un hogar a aquellos gatos dósiles.
+                        En el caso de los ferales, siguen viviendo en la colonia pero evitamos la sobrepoblación de la misma.
                       </p>
                     </CardContent>
                   </Card>
@@ -1063,7 +1076,7 @@ export default function OesteGatitos() {
                 <h4 className="text-3xl font-bold mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mt-4">
                   Centro Veterinario Zoonosis
                 </h4>
-                
+
                 {/* Photo Gallery */}
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   <div className="gsap-zoom">
@@ -1097,24 +1110,24 @@ export default function OesteGatitos() {
 
                 {/* Statistics */}
                 <div className="space-y-6">
-                    <div className="flex items-center justify-center gap-4 p-6 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl">
-                      <MapPin className="h-8 w-8 text-blue-600" />
-                      <div className="text-left">
-                        <h5 className="text-xl font-bold text-gray-800">Ubicación</h5>
-                        <p className="text-lg text-gray-700">Curupaytí 1129, Morón</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center gap-4 p-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl">
-                      <svg className="h-8 w-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                      </svg>
-                      <div className="text-left">
-                        <h5 className="text-xl font-bold text-gray-800">Contacto</h5>
-                        <p className="text-lg text-gray-700">4645-2624</p>
-                      </div>
+                  <div className="flex items-center justify-center gap-4 p-6 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl">
+                    <MapPin className="h-8 w-8 text-blue-600" />
+                    <div className="text-left">
+                      <h5 className="text-xl font-bold text-gray-800">Ubicación</h5>
+                      <p className="text-lg text-gray-700">Curupaytí 1129, Morón</p>
                     </div>
                   </div>
+
+                  <div className="flex items-center justify-center gap-4 p-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl">
+                    <svg className="h-8 w-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <div className="text-left">
+                      <h5 className="text-xl font-bold text-gray-800">Contacto</h5>
+                      <p className="text-lg text-gray-700">4645-2624</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1128,14 +1141,20 @@ export default function OesteGatitos() {
             <div className="gsap-fade-up">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                <Image
-                src="https://i.imgur.com/8gFuFe0.png"
-                alt="Oeste Gatitos Logo"
-                width={50}
-                height={50}
-                className="rounded-full object-cover transition-transform duration-300 hover:scale-110 hover: cursor-pointer"
-                priority
-               />
+                  <Image
+                    src="https://i.imgur.com/8gFuFe0.png"
+                    onClick={() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                      });
+                    }}
+                    alt="Oeste Gatitos Logo"
+                    width={50}
+                    height={50}
+                    className="rounded-full object-cover transition-transform duration-300 hover:scale-110 hover: cursor-pointer"
+                    priority
+                  />
                 </div>
                 <h4 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
                   Oeste Gatitos
