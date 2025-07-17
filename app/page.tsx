@@ -342,15 +342,31 @@ export default function OesteGatitos() {
                           behavior: 'smooth'
                         });
                       } else {
-                        // Para las demás secciones, usar el comportamiento normal
+                        // Para las demás secciones, ajustar offset según el dispositivo
                         const element = document.querySelector(item.href) as HTMLElement | null;
                         if (element) {
-                          const headerOffset = 50;
+                          // Detectar si es mobile real vs desktop/emulación
+                          const isMobileDevice = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                          const isSmallScreen = window.innerWidth <= 768;
+
+                          let headerOffset;
+
+                          if (isMobileDevice && isSmallScreen) {
+                            // Mobile real: offset más grande para compensar barras del navegador
+                            headerOffset = 120;
+                          } else if (isSmallScreen) {
+                            // Emulación mobile en desktop
+                            headerOffset = 100;
+                          } else {
+                            // Desktop
+                            headerOffset = 100;
+                          }
+
                           const elementPosition = element.offsetTop;
                           const offsetPosition = elementPosition - headerOffset;
 
                           window.scrollTo({
-                            top: offsetPosition,
+                            top: Math.max(0, offsetPosition),
                             behavior: 'smooth'
                           });
                         }
